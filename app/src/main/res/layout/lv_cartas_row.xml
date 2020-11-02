@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="70dp"
+        android:scaleType="fitXY"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCarta"
+        app:layout_constraintEnd_toStartOf="@+id/tvType"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarta" />
+
+    <TextView
+        android:id="@+id/tvCarta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Abundance"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvType"
+        app:layout_constraintStart_toStartOf="@+id/tvType"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="272dp"
+        android:layout_marginRight="272dp"
+        android:hint="91%"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
