@@ -2,6 +2,7 @@ package com.example.cartas.ui.main;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -49,7 +50,16 @@ public class MainFragment extends Fragment {
                 R.layout.lv_cartas_row,
                 items
         );
+
         lvCartas.setAdapter(adapter);
+
+        lvCartas.setOnItemClickListener((adapter, fragment, i, l) -> {
+            Carta carta = (Carta) adapter.getItemAtPosition(i);
+            Intent intent = new Intent(getContext(), DetailActivity.class);
+            intent.putExtra("carta", carta);
+
+            startActivity(intent);
+        });
 
         return view;
     }

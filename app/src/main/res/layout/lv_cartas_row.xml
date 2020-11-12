@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:hint="91%"
+        android:hint="Enchantment"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/ivImage"

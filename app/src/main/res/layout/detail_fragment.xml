@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.DetailsActivity">
+    tools:context=".ui.main.DetailFragment">
 
     <ImageView
         android:id="@+id/ivImage"
@@ -27,7 +27,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="The Dark Knight"
+        android:text="Abundance"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/ivImage"
@@ -38,20 +38,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Critics Score: 93%"
+        android:text="Enchantment"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@+id/tvCarta"
         app:layout_constraintTop_toBottomOf="@+id/tvCarta" />
 
-    <TextView
-        android:id="@+id/tvText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Audience Score: 93%"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@+id/tvType"
-        app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
     <TextView
         android:id="@+id/tvFlavor"
@@ -60,9 +51,19 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:text="This is an excellent movie that has action and romance"
-        app:layout_constraintLeft_toLeftOf="@+id/tvText"
+        android:text="They brandish their latest theories as warriors would wield weapons."
+        app:layout_constraintLeft_toLeftOf="@+id/tvType"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImage" />x
+        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="When Academy Researchers enters the battlefield, you may put an Aura card from your hand onto the battlefield attached to Academy Researchers."
+        app:layout_constraintLeft_toLeftOf="@+id/tvFlavor"
+        app:layout_constraintRight_toRightOf="@+id/tvFlavor"
+        app:layout_constraintTop_toBottomOf="@+id/tvFlavor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
