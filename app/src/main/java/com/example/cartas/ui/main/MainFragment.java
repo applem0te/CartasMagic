@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.cartas.Detail;
 import com.example.cartas.R;
 
 import java.util.ArrayList;
@@ -52,6 +53,15 @@ public class MainFragment extends Fragment {
         );
 
         lvCartas.setAdapter(adapter);
+
+        lvCartas.setOnItemClickListener((adapter, fragment, i, l) -> {
+            Carta carta = (Carta) adapter.getItemAtPosition(i);
+            Intent intent = new Intent(getContext(), Detail.class);
+            intent.putExtra("carta", carta);
+
+            startActivity(intent);
+        });
+
         return view;
     }
 
