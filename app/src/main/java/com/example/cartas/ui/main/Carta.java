@@ -54,9 +54,7 @@ public class Carta implements Serializable {
         return "Carta{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                ", text='" + text + '\'' +
-                ", flavor='" + flavor + '\'' +
+                ", imageURL='" + imageURL +
                 '}';
     }
 }

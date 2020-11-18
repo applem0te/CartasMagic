@@ -52,15 +52,6 @@ public class MainFragment extends Fragment {
         );
 
         lvCartas.setAdapter(adapter);
-
-        lvCartas.setOnItemClickListener((adapter, fragment, i, l) -> {
-            Carta carta = (Carta) adapter.getItemAtPosition(i);
-            Intent intent = new Intent(getContext(), DetailActivity.class);
-            intent.putExtra("carta", carta);
-
-            startActivity(intent);
-        });
-
         return view;
     }
 
