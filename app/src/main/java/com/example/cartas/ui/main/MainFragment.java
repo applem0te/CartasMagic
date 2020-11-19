@@ -25,6 +25,7 @@ import android.widget.ListView;
 import com.example.cartas.CartasViewModel;
 import com.example.cartas.Detail;
 import com.example.cartas.R;
+import com.example.cartas.SharedViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +59,10 @@ public class MainFragment extends Fragment {
 
         lvCartas.setAdapter(adapter);
 
+        sharedModel = ViewModelProviders.of(getActivity()).get( (1)
+                SharedViewModel.class
+        );
+
         lvCartas.setOnItemClickListener((adapter, fragment, i, l) -> {
             Carta carta = (Carta) adapter.getItemAtPosition(i);
             Intent intent = new Intent(getContext(), Detail.class);
@@ -67,7 +72,7 @@ public class MainFragment extends Fragment {
         });
 
         model = ViewModelProviders.of(this).get(CartasViewModel.class);
-        model.getCartas().observe(this, movies -> {
+        model.getCartas().observe(getViewLifecycleOwner(), cartas -> {
             adapter.clear();
             adapter.addAll(cartas);
         });

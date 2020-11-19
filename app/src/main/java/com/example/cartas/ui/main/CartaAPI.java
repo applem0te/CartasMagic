@@ -14,7 +14,7 @@ public class CartaAPI {
     private final String BASE_URL = "https://api.magicthegathering.io/";
     private final String API_KEY = "<api-key>";
 
-    ArrayList<Carta> getCartas() {
+    public ArrayList<Carta> getCartas() {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendPath("v1")
@@ -53,8 +53,6 @@ public class CartaAPI {
                 catch(Exception e){
                     System.out.println("Null image");
                 }
-
-
                 cartas.add(carta);
             }
         } catch (JSONException e) {

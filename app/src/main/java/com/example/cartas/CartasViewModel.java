@@ -30,6 +30,7 @@ public class CartasViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Carta>> getCartas() {
+
         return cartaDao.getCartas();
     }
 
@@ -47,18 +48,10 @@ public class CartasViewModel extends AndroidViewModel {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(
                     app.getApplicationContext()
             );
-            String pais = preferences.getString("pais", "es");
-            String tipusConsulta = preferences.getString(
-                    "tipus_consulta", "vistes"
-            );
 
             CartaAPI api = new CartaAPI();
             ArrayList<Carta> result;
-            if (tipusConsulta.equals("vistes")) {
-                result = api.getPeliculesMesVistes(pais);
-            } else {
-                result = api.getProximesEstrenes(pais);
-            }
+            result = api.getCartas();
 
             cartaDao.deleteCartas();
             cartaDao.addCartas(result);
