@@ -1,5 +1,6 @@
 package com.example.cartas.ui.main;
 
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.cartas.CartasViewModel;
 import com.example.cartas.Detail;
 import com.example.cartas.R;
 
@@ -32,6 +35,7 @@ public class MainFragment extends Fragment {
     private CartasAdapter adapter;
 
     private MainViewModel mViewModel;
+    CartasViewModel model;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -60,6 +64,12 @@ public class MainFragment extends Fragment {
             intent.putExtra("carta", carta);
 
             startActivity(intent);
+        });
+
+        model = ViewModelProviders.of(this).get(CartasViewModel.class);
+        model.getCartas().observe(this, movies -> {
+            adapter.clear();
+            adapter.addAll(cartas);
         });
 
         return view;

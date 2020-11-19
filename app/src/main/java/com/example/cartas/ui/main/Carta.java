@@ -1,11 +1,22 @@
 package com.example.cartas.ui.main;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity
 public class Carta implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String name;
     private String type;
     private String imageURL;
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getName() {
         return name;
