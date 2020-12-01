@@ -34,6 +34,7 @@ public class MainFragment extends Fragment {
 
     private ArrayList<Carta> items;
     private CartasAdapter adapter;
+    private SharedViewModel sharedModel;
 
     private MainViewModel mViewModel;
     CartasViewModel model;
@@ -57,18 +58,22 @@ public class MainFragment extends Fragment {
                 items
         );
 
-        lvCartas.setAdapter(adapter);
-
-        sharedModel = ViewModelProviders.of(getActivity()).get( (1)
+        sharedModel = ViewModelProviders.of(getActivity()).get(
                 SharedViewModel.class
         );
 
+        lvCartas.setAdapter(adapter);
+
         lvCartas.setOnItemClickListener((adapter, fragment, i, l) -> {
             Carta carta = (Carta) adapter.getItemAtPosition(i);
-            Intent intent = new Intent(getContext(), Detail.class);
-            intent.putExtra("carta", carta);
 
-            startActivity(intent);
+            if (!esTablet()) {
+                Intent intent = new Intent(getContext(), Detail.class);
+                intent.putExtra("carta", carta);
+                startActivity(intent);
+            } else {
+                sharedModel.select(carta);
+            }
         });
 
         model = ViewModelProviders.of(this).get(CartasViewModel.class);
@@ -78,6 +83,10 @@ public class MainFragment extends Fragment {
         });
 
         return view;
+    }
+
+    boolean esTablet() {
+        return getResources().getBoolean(R.bool.tablet);
     }
 
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {

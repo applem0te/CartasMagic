@@ -1,5 +1,6 @@
 package com.example.cartas.ui.main;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.text.Html;
 import android.util.Log;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.cartas.R;
+import com.example.cartas.SharedViewModel;
 
 public class DetailFragment extends Fragment {
 
@@ -47,6 +50,17 @@ public class DetailFragment extends Fragment {
                 updateUi(carta);
             }
         }
+
+        SharedViewModel sharedModel = ViewModelProviders.of(
+                getActivity()
+        ).get(SharedViewModel.class);
+        sharedModel.getSelected().observe(getViewLifecycleOwner(), new Observer<Carta>() {
+            @Override
+            public void onChanged(@Nullable Carta carta) {
+                updateUi(carta);
+            }
+        });
+
 
         return view;
     }
